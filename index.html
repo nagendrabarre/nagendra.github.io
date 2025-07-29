@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barre Nagendra Babu - Data Scientist Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>        
+        /* Custom CSS for animations and specific styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth; /* Smooth scrolling for navigation */
+        }
+
+        /* Blink animation for section highlighting */
+        @keyframes blink-highlight {
+            0% { box-shadow: 0 0 0px rgba(0, 123, 255, 0.7); }
+            50% { box-shadow: 0 0 15px rgba(0, 123, 255, 0.7); }
+            100% { box-shadow: 0 0 0px rgba(0, 123, 255, 0.7); }
+        }
+
+        .highlight-blink {
+            animation: blink-highlight 1s ease-in-out 2; /* Blink twice */
+        }
+
+        /* Image zoom on hover */
+        .zoom-container {
+            overflow: hidden; /* Ensures the zoomed part doesn't overflow */
+        }
+
+        .zoom-image {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .zoom-container:hover .zoom-image {
+            transform: scale(1.1); /* Zooms in 10% */
+        }
+
+        /* Typing effect cursor */
+        .typing-effect::after {
+            content: '|';
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+
+        /* Custom modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(245, 238, 238, 0.7); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #eceef1; /* Dark gray */
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%; /* Could be more specific */
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Specific styling for the experience section tabs */
+        .tab-button.active {
+            background-color: #2d3748; /* Darker gray for active tab */
+            color: #ffffff;
+            border-bottom: 2px solid #3b82f6; /* Blue underline */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg p-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+            <!-- Left side: AI and Data Scientist -->
+            <div class="text-2xl font-bold text-white-900 bg-gray px-4 py-2 rounded-md mb-4 md:mb-0">
+                AI and Data Scientist
+            </div>
+
+            <!-- Right side: Navigation Links -->
+            <nav class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <a href="#home" class="nav-link text-lg font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300 rounded-md px-3 py-2" data-section="home">Home</a>
+                <a href="#about" class="nav-link text-lg font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300 rounded-md px-3 py-2" data-section="about">About</a>
+                <a href="#education" class="nav-link text-lg font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300 rounded-md px-3 py-2" data-section="education">Education</a>
+                <a href="#experience" class="nav-link text-lg font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300 rounded-md px-3 py-2" data-section="experience">Experience</a>
+                <a href="#projects" class="nav-link text-lg font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300 rounded-md px-3 py-2" data-section="projects">Projects</a>
+                <a href="#certifications" class="nav-link text-lg font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300 rounded-md px-3 py-2" data-section="certifications">Certifications</a>
+                <a href="#contact" class="nav-link text-lg font-medium text-gray-300 hover:text-blue-400 transition-colors duration-300 rounded-md px-3 py-2" data-section="contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Sections -->
+    <main class="pt-24"> <!-- Padding top to account for fixed header -->
+
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-br from-white-900 to-white-800 rounded-b-lg shadow-inner">
+            <div class="container mx-auto flex flex-col md:flex-row items-center justify-center gap-60">
+                <!-- Left side: Photo -->
+                <div class="flex-shrink-0 mb-4 md:mb-0">
+                    <img src="WhatsApp Image 2025-03-17 at 7.13.47 PM.jpeg.jpg" alt="Your Photo" class="w-80  h-80 md:w-90  md:h-90 rounded-full object-cover shadow-2xl border-7 border-black-500">
+                </div>
+
+                <!-- Right side: Name, Typing Effect, Social Links, Resume Button -->
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-white-900 bg-gray px-3 py-1 rounded-lg mb-4 shadow-xl inline-block">
+                    Barre Nagendra Babu
+                    </h1>
+                    <div class="text-2xl md:text-4xl text-blue-600 font-semibold mb-5 typing-effect min-h-[3rem]">
+                        <span id="typing-text"></span>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex justify-center md:justify-start gap-6 mb-8">
+                        <a href="https://www.linkedin.com/in/barrenagendrababu" target="_blank" class="text-gray-900 bg-white p-3 rounded-full shadow-lg hover:bg-blue-500 hover:text-white transition-all duration-300">
+                            <i class="fab fa-linkedin-in text-2xl"></i>
+                        </a>
+                        <a href="https://github.com/nagendrabarre" target="_blank" class="text-gray-900 bg-white p-3 rounded-full shadow-lg hover:bg-gray-700 hover:text-white transition-all duration-300">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                    </div>
+
+                    <!-- Download Resume Button -->
+                    <a href="FAANGPath_Simple_Template (1).pdf" download class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300">
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="min-h-screen p-8 bg-gray-800 flex flex-col justify-center items-center py-16">
+            <div class="container mx-auto bg-gray-700 p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-center gap-12">
+                <!-- Left side: About paragraph -->
+                <div class="md:w-1/2 text-lg leading-relaxed text-gray-200">
+                    <h2 class="text-4xl font-bold text-white mb-6 border-b-4 border-blue-500 pb-2 inline-block">About Me:</h2>
+                    <p class="mb-4">
+                        Hello! I'm Barre Nagendra Babu, a passionate and results-driven Data Scientist with a strong foundation in Python, Sql, Excel, Power BI and Tableau. My journey in data science is driven by a curiosity to uncover insights from complex datasets and translate them into actionable solutions.
+                    </p>
+                    <p class="mb-4">
+                        I have experience with various libraries such as Numpy, Pandas, Matplotlib, and seaborn. and transforming data into insights that
+ help businesses make informed decisions. With a strong background in data analysis, exploratory data analysis, datavisualization, data cleaning and data manipulation. Additionally, I have a strong mathematical foundation, including
+ algebra, calculus, probability and statastics. I thrive in environments where I can solve complex challenges using
+ data. 
+                    </p>
+                    <p>
+                        I am committed to continuous learning and staying abreast of the latest advancements in the field. I thrive in collaborative environments where I can contribute to innovative projects and solve real-world problems using data-driven approaches.
+                    </p>
+                </div>
+
+                <!-- Right side: Square photo + paragraph -->
+                <div class="md:w-1/2 text-lg leading-relaxed text-gray-200">
+                    <h2 class="text-2xl font-bold text-white mb-6 border-b-4 border-blue-500 pb-2 inline-block">Skills:</h2>
+                    <p class="mb-4">
+                        <h3 class="text-xl font-bold text-blue-500 inline">Programming Languages:</h3>
+                            <span class="text-white-50 font-semibold">Python</span>, 
+                            <span class="text-white-50 font-semibold">Java</span>,
+                    </p>
+                    <p class="mb-4">
+                        <h3 class="text-xl font-bold text-blue-500 inline">Libraries:</h3>
+                            <span class="text-white-50 font-semibold">Numpy</span>, 
+                            <span class="text-white-50 font-semibold">Pandas</span>,
+                            <span class="text-white-50 font-semibold">Matplotlib</span>,
+                            <span class="text-white-50 font-semibold">Seaborn</span>,
+                    </p>
+                    <p class="mb-4">
+                        <h3 class="text-xl font-bold text-blue-500 inline">Data visualization & BI Tools:    </h3>
+                            <span class="text-white-50 font-semibold">Power BI</span>, 
+                            <span class="text-white-50 font-semibold">Tableau</span>,
+                    </p>
+                    <p class="mb-4">
+                        <h3 class="text-xl font-bold text-blue-500 inline">Databases & Querying:    </h3>
+                            <span class="text-white-50 font-semibold">SQL</span>, 
+                            <span class="text-white-50 font-semibold">MongoDB</span>,
+                    </p>
+                    <p class="mb-4">
+                        <h3 class="text-xl font-bold text-blue-500 inline">Version Control & Collaboration:    </h3>
+                            <span class="text-white-50 font-semibold">Git</span>, 
+                            <span class="text-white-50 font-semibold">GitHub</span>,
+                    </p>
+                    <p class="mb-4">
+                        <h3 class="text-xl font-bold text-blue-500 inline">Productivity & Office Tools:    </h3>
+                            <span class="text-white-50 font-semibold">Excel</span>, 
+                            <span class="text-white-50 font-semibold">MS Office</span>,
+                    </p>
+                    <p class="mb-4">
+                        <h3 class="text-xl font-bold text-blue-500 inline">Data Wrangling:</h3>:</h3>
+                            <span class="text-white-50 font-semibold">Data Analysis</span>, 
+                            <span class="text-white-50 font-semibold">Exploratory Data Analysis</span>,
+                            <span class="text-white-50 font-semibold">Data Visualization</span>,
+                            <span class="text-white-50 font-semibold">Data Cleaning</span>,
+                            <span class="text-white-50 font-semibold">Data Manipulation</span>, 
+                    </p>
+                </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="min-h-screen p-8 bg-gray-900 flex flex-col justify-center items-center py-16">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold text-white-900 bg-gray px-4 py-2 rounded-lg mb-12 shadow-xl inline-block">
+                    Education
+                    <div class="w-full h-1 bg-blue-500 rounded-full mt-2"></div>
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
+                    <!-- Education Item 1 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-2xl flex flex-col items-center zoom-container">
+                        <img src="college.jpg" alt="College Photo 1" class="zoom-image w-full h-90 object-cover rounded-lg mb-6 border-4 border-blue-400">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Bachelor of Technology in CSE(Artificial Intelligence & Machine learning)</h3>
+                        <p class="text-lg text-white-300 mb-2">Pragati Engineering College(Surampalem)</p>
+                        <p class="text-md text-white-400 mb-1">Year: 2023 - Present</p>
+                        <p class="text-md text-white-400">CGPA: 8.02/10.0</p>
+                    </div>
+
+                    <!-- Education Item 2 -->
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-2xl flex flex-col items-center zoom-container">
+                        <img src="intermediate.jpg" alt="College Photo 2" class="zoom-image w-full h-60 object-cover rounded-lg mb-6 border-4 border-blue-400">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Intermediate(MPC)</h3>
+                        <p class="text-lg text-white-300 mb-1">SriChaitanya Junior college(Amalapuram)</p>
+                        <p class="text-md text-white-400 mb-1">Year: 2021 - 2023</p>
+                        <p class="text-md text-white-400">Percentage: 96.9%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="min-h-screen p-8 bg-gray-800 flex flex-col justify-center items-center py-16">
+            <div class="container mx-auto bg-gray-700 p-8 rounded-xl shadow-2xl">
+                <h2 class="text-4xl font-bold text-white mb-8 text-center border-b-4 border-blue-500 pb-2 inline-block">Experience</h2>
+
+                <!-- Tab Buttons for Work Experience  -->
+                <div class="flex justify-center gap-4 mb-8">
+                    <button id="work-experience-tab" class="tab-button px-6 py-3 rounded-lg text-lg font-semibold bg-gray-900 text-gray-200 hover:bg-gray-500 transition-colors duration-300 active">Work Experience</button>
+                </div>
+
+<!-- Work Experience Content -->
+<div id="work-experience-content" class="tab-content">
+    <!-- Internship Experience -->
+    <div class="flex flex-col md:flex-row items-center gap-8 bg-gray-800 p-6 rounded-xl shadow-lg mb-8">
+        <div class="md:w-1/6 flex-shrink-0 zoom-container">
+            <img src="internship.jpg" alt="Work Experience Photo" class="zoom-image w-full h-auto object-cover rounded-lg border-2 border-blue-200">
+        </div>
+        <div class="md:w-2/3 text-lg text-gray-200">
+            <h3 class="text-2xl font-semibold text-white mb-2">Data Science Master Virtual Internship</h3>
+            <p class="text-md text-white-400 mb-2">Altair (Organized by AICTE)</p>
+            <p class="text-md text-gray-400 mb-4">October 2024 - December 2024</p>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Built and optimized multiple data analysis workflows, cleaning and transforming large datasets to extract meaningful insights, using Python and SQL.</li>
+                <li>Developed interactive dashboards in Power BI for business reporting, resolving performance issues by implementing data aggregation and optimizing DAX queries.</li>
+                <li>Performed EDA using Pandas, Matplotlib, and Seaborn, tackling challenges with unstructured data by designing custom parsers and automation scripts.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Coding Profiles (Now part of Work Experience) -->
+<!-- Tab Buttons for  Coding Profiles -->
+    <div class="flex justify-center gap-4 mb-8">
+         <button id="Coding Profiles-tab" class="tab-button px-6 py-3 rounded-lg text-lg font-semibold bg-gray-900 text-gray-200 hover:bg-gray-500 transition-colors duration-300 active">Coding Profiles</button>
+    </div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Profile 1: LeetCode -->
+    <a href="https://leetcode.com/u/23A31A4233" target="_blank" class="block p-2 rounded-xl shadow-lg zoom-container">
+        <img src="leetcode.jpg" alt="LeetCode Profile" class="zoom-image w-full h-full object-cover rounded-lg">
+    </a>
+    <!-- Profile 2: HackerRank -->
+    <a href="https://www.hackerrank.com/profile/23A31A4233" target="_blank" class="block p-2 rounded-xl shadow-lg zoom-container">
+        <img src="hackerrank.jpg" alt="HackerRank Profile" class="zoom-image w-full h-full object-cover rounded-lg">
+    </a>
+    <!-- Profile 3: GeeksforGeeks -->
+    <a href="https://www.geeksforgeeks.org/user/nagendrabyxhk/" target="_blank" class="block p-2 rounded-xl shadow-lg zoom-container">
+        <img src="geeksforgeeks.jpg" alt="GeeksforGeeks Profile" class="zoom-image w-full h-full object-cover rounded-lg">
+    </a>
+    <!-- Profile 4: CodeChef -->
+    <a href="https://www.codechef.com/users/nagendra_129" target="_blank" class="block p-2 rounded-xl shadow-lg zoom-container">
+        <img src="codechef.jpg" alt="CodeChef Profile" class="zoom-image w-full h-full object-cover rounded-lg">
+    </a>
+</div>
+
+     <!-- Projects Section -->
+<section id="projects" class="min-h-screen bg-gray-900 p-8 flex flex-col items-center py-16">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-bold text-white mb-12 border-b-4 border-blue-500 pb-2 inline-block">
+      My Projects
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <!-- Project Item 1 -->
+      <div class="bg-gray-800 p-8 rounded-xl shadow-2xl flex flex-col items-center">
+        <div class="zoom-container rounded-lg overflow-hidden shadow-lg mb-6 cursor-pointer"
+             onclick="showModal('project1-modal')" tabindex="0" role="button" aria-label="View details for Personal Portfolio Website">
+          <img src="project.png" alt="Screenshot of Personal Portfolio Website"
+               class="zoom-image w-full h-48 object-cover rounded-lg border-4 border-blue-400">
+        </div>
+        <h3 class="text-2xl font-semibold text-white mb-3">Personal Portfolio Website</h3>
+        <!-- Button removed -->
+      </div>
+      <!-- Project Item 2 -->
+      <div class="bg-gray-800 p-8 rounded-xl shadow-2xl flex flex-col items-center">
+        <div class="zoom-container rounded-lg overflow-hidden shadow-lg mb-6 cursor-pointer"
+             onclick="showModal('project2-modal')" tabindex="0" role="button" aria-label="View details for E‑commerce Dashboard">
+          <img src="ecommercedashboard.jpg" alt="Screenshot of E‑commerce Sales & Customer Behavior Dashboard"
+               class="zoom-image w-full h-48 object-cover rounded-lg border-4 border-blue-400">
+        </div>
+        <h3 class="text-2xl font-semibold text-white mb-3">E‑commerce Sales & Customer Behavior Analysis</h3>
+        <!-- Button removed -->
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Modals (place elsewhere in your document) -->
+  <div id="project1-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <!-- modal content -->
+  </div>
+  <div id="project2-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <!-- modal content -->
+  </div>
+</section>
+
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="min-h-screen p-8 bg-gray-800 flex flex-col justify-center items-center py-16">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold text-white mb-12 border-b-4 border-blue-500 pb-2 inline-block">Certifications</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Certification Item 1 -->
+                    <div class="bg-gray-700 p-8 rounded-xl shadow-2xl flex flex-col items-center">
+                        <div class="zoom-container rounded-lg overflow-hidden shadow-lg mb-6">
+                            <img src="pythoncertification.jpg" alt="" class="zoom-image w-full h-auto object-cover rounded-lg border-2 border-blue-400">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Python Zero to Hero</h3>
+                        <p class="text-md text-gray-300 mb-1">Issued by: Guvi</p>
+                        <p class="text-md text-gray-400">Date: 23 November 2024</p>
+                    </div>
+
+                    <!-- Certification Item 2 -->
+                    <div class="bg-gray-700 p-8 rounded-xl shadow-2xl flex flex-col items-center">
+                        <div class="zoom-container rounded-lg overflow-hidden shadow-lg mb-6">
+                            <img src="standford_university.jpg" alt="Certificate 2" class="zoom-image w-full h-auto object-cover rounded-lg border-4 border-blue-400">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Computer Science Fundamentals</h3>
+                        <p class="text-md text-gray-300 mb-1">Issued by: Stanford University (edx)</p>
+                        <p class="text-md text-gray-400">Date: 20 April, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="min-h-screen p-8 bg-gray-900 flex flex-col justify-center items-center py-16">
+            <div class="container mx-auto bg-gray-800 p-8 rounded-xl shadow-2xl flex flex-col lg:flex-row gap-12">
+                <!-- Left side: Personal Details and Social Links -->
+                <div class="lg:w-1/2 text-lg text-gray-200">
+                    <h2 class="text-4xl font-bold text-white mb-6 border-b-4 border-blue-500 pb-2 inline-block">Get in Touch</h2>
+                    <p class="mb-4"><i class="fas fa-envelope text-blue-400 mr-3"></i> Email: <a href="your.email@example.com" class="text-blue-300 hover:underline"></a>bnagendrababu129@gmail.com</p>
+                    <p class="mb-6"><i class="fas fa-phone-alt text-blue-400 mr-3"></i> Phone: +91 87906 38655</p>
+
+                    <h3 class="text-2xl font-semibold text-white mb-4">Connect with Me</h3>
+                    <div class="flex flex-wrap gap-6">
+                        <a href="https://www.linkedin.com/in/barrenagendrababu" target="_blank" class="text-gray-900 bg-white p-3 rounded-full shadow-lg hover:bg-blue-500 hover:text-white transition-all duration-300">
+                            <i class="fab fa-linkedin-in text-2xl"></i>
+                        </a>
+                        <a href="https://github.com/nagendrabarre" target="_blank" class="text-gray-900 bg-white p-3 rounded-full shadow-lg hover:bg-gray-700 hover:text-white transition-all duration-300">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_nagendra_129/" target="_blank" class="text-gray-900 bg-white p-3 rounded-full shadow-lg hover:bg-pink-500 hover:text-white transition-all duration-300">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1BP1JLZoac/" target="_blank" class="text-gray-900 bg-white p-3 rounded-full shadow-lg hover:bg-blue-700 hover:text-white transition-all duration-300">
+                            <i class="fab fa-facebook-f text-2xl"></i>
+                        </a>
+                        <a href="https://x.com/nagendra_129?t=S1X06vIuJ5tlovnUiUkdQA&s=09" target="_blank" class="text-gray-900 bg-white p-3 rounded-full shadow-lg hover:bg-blue-400 hover:text-white transition-all duration-300">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right side: Contact Form -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-bold text-white mb-6 border-b-4 border-blue-500 pb-2 inline-block">Send a Message</h2>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="user_name" class="block text-gray-300 text-sm font-bold mb-2">Name</label>
+                            <input type="text" id="user_name" name="user_name" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200" required>
+                        </div>
+                        <div>
+                            <label for="user_email" class="block text-gray-300 text-sm font-bold mb-2">Email</label>
+                            <input type="email" id="user_email" name="user_email" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message</label>
+                            <textarea id="message" name="message" rows="6" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Custom Modal for Messages -->
+    <div id="custom-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <p id="modal-message" class="text-white text-lg"></p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mt-4" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <!-- Mail.js CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize Mail.js with your Public Key
+        // Replace 'YOUR_PUBLIC_KEY' with your actual Mail.js Public Key
+        // You can find this in your Mail.js account dashboard under Account -> API Keys
+        (function() {
+            emailjs.init("ZD3QZvVWsuzc5mOP-");
+        })();
+
+        // Typing Effect for Home Section
+        const words = [
+            "Data Analysis",
+            "Data Analytics",
+            "Exploratory Data Analysis",
+            "Data Visualization",
+            "Data Manipulation",
+            "Data Cleaning",
+            "Data Mining"
+        ];
+        let wordIndex = 2;
+        let charIndex = 0;
+        const speed = 100; // Typing speed in milliseconds
+        const pauseBetweenWords = 1000; // Pause before typing the next word
+        const typingTextElement = document.getElementById('typing-text');
+
+        function typeWriter() {
+            if (wordIndex < words.length) {
+                if (charIndex < words[wordIndex].length) {
+                    typingTextElement.textContent += words[wordIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    setTimeout(eraseText, pauseBetweenWords);
+                }
+            } else {
+                wordIndex = 0; // Loop back to the first word
+                setTimeout(typeWriter, pauseBetweenWords);
+            }
+        }
+
+        function eraseText() {
+            if (charIndex > 0) {
+                typingTextElement.textContent = words[wordIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, speed / 2); // Erasing faster
+            } else {
+                wordIndex++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriter(); // Start the typing effect on page load
+
+            // Navigation Highlighting and Scroll
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    // Remove highlight from all sections first
+                    document.querySelectorAll('section').forEach(section => {
+                        section.classList.remove('highlight-blink');
+                    });
+
+                    // Add highlight to the target section
+                    if (targetSection) {
+                        targetSection.classList.add('highlight-blink');
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Intersection Observer for active navigation link
+            const sections = document.querySelectorAll('section');
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3 // Adjust as needed
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-blue-400'); // Remove active color
+                            link.classList.add('text-gray-300'); // Add inactive color
+                            if (link.getAttribute('href').includes(entry.target.id)) {
+                                link.classList.add('text-blue-400'); // Add active color
+                                link.classList.remove('text-gray-300'); // Remove inactive color
+                            }
+                        });
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Mail.js Form Submission
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual Mail.js IDs
+                // You can find these in your Mail.js account dashboard
+                emailjs.sendForm('service_g8nmmld', 'template_393wjxr', this)
+                    .then(function() {
+                        showModal('Message sent successfully!');
+                        contactForm.reset(); // Clear the form
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                        showModal('Failed to send message. Please try again later.');
+                    });
+            });
+
+
+            // Experience Section Tab Switching
+            const workExperienceTab = document.getElementById('work-experience-tab');
+            const codingProfilesTab = document.getElementById('coding-profiles-tab');
+            const workExperienceContent = document.getElementById('work-experience-content');
+            const codingProfilesContent = document.getElementById('coding-profiles-content');
+
+            workExperienceTab.addEventListener('click', () => {
+                workExperienceContent.classList.remove('hidden');
+                codingProfilesContent.classList.add('hidden');
+                workExperienceTab.classList.add('active');
+                codingProfilesTab.classList.remove('active');
+            });
+
+            codingProfilesTab.addEventListener('click', () => {
+                codingProfilesContent.classList.remove('hidden');
+                workExperienceContent.classList.add('hidden');
+                codingProfilesTab.classList.add('active');
+                workExperienceTab.classList.remove('active');
+            });
+        });
+
+        // Custom Modal Functions
+        const customModal = document.getElementById('custom-modal');
+        const modalMessage = document.getElementById('modal-message');
+
+        function showModal(message) {
+            modalMessage.textContent = message;
+            customModal.style.display = 'flex'; // Use flex to center content
+        }
+
+        function closeModal() {
+            customModal.style.display = 'none';
+        }
+
+        // Project Modals (for Google Drive access message)
+        function showProjectModal(projectId) {
+            let message = '';
+            if (projectId === 'project1-modal') {
+                message = 'To request access to Project 1 on Google Drive, please send an email to your.email@example.com with your request. I will share access if interested.';
+            } else if (projectId === 'project2-modal') {
+                message = 'To request access to Project 2 on Google Drive, please send an email to your.email@example.com with your request. I will share access if interested.';
+            } else if (projectId === 'project3-modal') {
+                message = 'To request access to Project 3 on Google Drive, please send an email to your.email@example.com with your request. I will share access if interested.';
+            }
+            showModal(message);
+        }
+    </script>
+</body>
+</html>
